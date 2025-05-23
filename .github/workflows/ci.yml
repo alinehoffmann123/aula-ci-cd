@@ -1,0 +1,24 @@
+name: Integração Contínua
+
+on: [push, pull_request]
+
+jobs: 
+  buld-and-test:
+    runs-on: ubuntu-latest
+
+    steps: 
+      - name: Clonar repositótio
+        uses: action/checkout@v3
+
+      - name: Instalar Node.js
+        uses: action/setup-node@v3
+        with:
+            node-version: '20'
+
+      - name: Instalar depedências
+        run: npm install
+
+      - name: Executar Teste
+        run: npm test
+
+      
